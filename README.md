@@ -33,7 +33,7 @@ Unity在安卓平台的默认构建方式是将插件代码及资源置于plugin
 
 - ##第一次尝试
 	
-	将上述的四个文件拷贝至一个目录中来开始第一个测试工程，例如本例中的first-proj。
+	将上述的四个文件拷贝至一个目录中来开始第一个测试工程，例如本例中的proj-hello。
 	在命令行中调用gradlew.bat init(如果在MacOS上需要使用gradlew init)来进行初始化操作。
 	会发现生成了两个文件build.gralde和settings.gradle，以及一个目录.gradle
 	build.gradle是构建过程的核心，它里面记载了构建工程的配置，其内容如下：
@@ -62,7 +62,7 @@ Unity在安卓平台的默认构建方式是将插件代码及资源置于plugin
 		*/
 	这是一个用于java的构建配置，在使用前时请将首行和末行的注释取消。其核心部分只有一行，其它的配置暂时都不是必须的。
 		apply plugin: 'java'		
-	接下来我们编译一段小程序，创建一个文件位于：first-proj\src\main\java\main.java
+	接下来我们编译一段小程序，创建一个文件位于：proj-hello\src\main\java\main.java
 		package com.test.gradle;
 
 		public class main
@@ -87,7 +87,7 @@ Unity在安卓平台的默认构建方式是将插件代码及资源置于plugin
 		
 		BUILD SUCCESSFUL
 	在build目录下可以找到生成的结果，class/jar等。执行以下命令来观察输出结果：
-		java -classpath build\libs\first-proj.jar com.test.gradle.main
+		java -classpath build\libs\proj-hello.jar com.test.gradle.main
 		Hello Gradle!
 	java plugin是gradle提供的众多插件的一种，可以修改另一种插件'application'进行尝试
 		apply plugin: 'application'
