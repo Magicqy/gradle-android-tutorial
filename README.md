@@ -8,18 +8,18 @@ Unity在安卓平台的默认构建方式是将插件代码及资源置于plugin
 #准备工作
 	安装AndroidSDK，下载合适版本的BuildTools，设置好相应的环境变量ANDROID_HOME
 	安装JavaSDK，设置好相应的环境变量JAVA_HOME
-	安装AndroidStudio
+	安装Android Studio
 
 #基础
 - ##基本概念
 	
 	简单来讲，可以将Gradle看作一个构建框架，通过各种Plugin来提供构建不同类型产品的能力。
 	默认情况下Gradle被用于构建Java工程。
-	Google为Gradle提供了Android的构建插件，自从AndroidStudio中的所有的构建工作都通过Gradle Android Plguin来实现。
+	Google为Gradle提供了Android的构建插件，自从Android Studio中的所有的构建工作都通过Gradle Android Plguin来实现。
 
 - ##获取Gradle Android Plguin
 	
-	从AndroidStudio安装目录中拷贝相应的文件即可，它们位于:
+	从Android Studio安装目录中拷贝相应的文件即可，它们位于:
 		{android_sdk_path}\tools\templates\gradle\wrapper
 	该目录下共包含四个文件：
 		gradle\wrapper\gradle-wrapper.jar
@@ -98,30 +98,38 @@ Unity在安卓平台的默认构建方式是将插件代码及资源置于plugin
 		:classes UP-TO-DATE
 		:run
 		Hello Gradle!
-	
-- ##Gradle概念介绍
 
-	Gradle的核心概念是project和task，一个project以一个目录为根，搭配一个或多个build.gradle配置。
-	task则是一系列操作，完成构建过程。上面使用过的init/build/run等都是Gradle默认提供task。
-	只需要在build.gradle中编写配置，在命令行中调用一个task即可完成构建过程。
+- ##Gradle简介
+	
+	Gradle构建系统的核心是project和task。
+	project以一个目录为根，存放了工程的代码及各类资源文件。
+	task则是定义了一系列操作，用于完成构建过程，它们一般在build.gradle的文件中进行定义。上面使用过的init/build/run等都是Gradle默认提供task。
 	
 	例如一个简单的任务定义为：
 		task helloWorld << {
    			println "Hello World!"
 		}
-	执行结果：
+	执行任务：
 		gradlew.bat helloWorld
 		Hello World!
-		
+
+	多个任务可以在命令行中使用空格分开一次性输入，依次执行
+
+	Gradle用户手册页面：
+	https://docs.gradle.org/current/userguide/userguide.html
+
+- ##Android工程构建
+
+	自从Google发布了新的IDE Android Studio取代Eclipse with ADT成为官方开发工具之后，Gradle也成为Android官方所推荐使用的新构建系统。
+
 	每种插件都为某种类型的构建任务提供了大量预置的任务，通过简单的配置就可以方便的完成构建配置。
 	
 	Gradle Plugin For Android相关页面：
 	- http://developer.android.com/tools/building/plugin-for-gradle.html
 	- http://tools.android.com/tech-docs/new-build-system/user-guide
-	
-- properties文件
 
 ##进阶
+- properties文件
 - settings文件
 - 多工程
 - 工程依赖
@@ -130,6 +138,9 @@ Unity在安卓平台的默认构建方式是将插件代码及资源置于plugin
 
 ##与Unity相结合
 - Unity导出工程并使用gradle构建
+	Android Plugin的使用也相当方便，以一个Unity3D引擎导出的Android工程为例，
+	编写了一份build.gradle配置文件位于：proj-android/test-proj/build.gradle
+
 - 加入第三方SDK
 - 多渠道
 - 辅助任务
